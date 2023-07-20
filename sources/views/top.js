@@ -1,5 +1,6 @@
 import { JetView, plugins } from "webix-jet";
 import AboutUs from "./aboutUs";
+import swal from "sweetalert";
 export default class TopView extends JetView {
 	config() {
 		var header = {
@@ -142,13 +143,25 @@ export default class TopView extends JetView {
 				on: {
 					onItemClick: (val) => {
 						$$("menuSub").hide();
-						if (val == "Logout") {
-							window.location.assign("http://localhost:8081/#!/login_form");
-							window.location.reload();
+
+						swal({
+							title: "Xác nhận",
+							text: "Bạn muốn đăng xuất không",
+							icon: "warning",
+							buttons: true,
+							dangerMode: true,
+						  })
+						  .then((willDelete) => {
+							if (willDelete) {
+								window.location.assign("http://localhost:8081/#!/login_form");
+								window.location.reload();
+							} else {
+								window.location.reload();
+							}
+						  });
 						}
 					}
 				}
-			}
 		});
 
 		this.aboutUs = new AboutUs({id:"AboutUs"});
