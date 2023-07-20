@@ -37,7 +37,6 @@
 }
 
 .webix_full_screen {
-    background: rgb(2, 0, 36);
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 36%, rgba(0, 212, 255, 1) 100%);
 }
 
@@ -60,22 +59,24 @@
 }
 
 .loginBody {
-    background: rgb(35, 191, 246);
-    background: linear-gradient(90deg, rgba(35, 191, 246, 1) 0%, rgba(165, 224, 236, 1) 46%, rgba(120, 211, 241, 1) 96%);
+    background: rgb(156, 210, 230);
+    background-image: linear-gradient(to right, #00b4db, #0083b0);
 }
 
 /* Form Login */
 .webix_scroll_cont .formLogin {
     margin: 0 auto;
-    width: 50%;
-    border-radius: 10%;
-    background-color: rgb(144, 212, 252);
+    /* width: 50%; */
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+    background-color: rgba(44,48,50,255);
     height: 60%;
+    opacity: 0.95;
 }
 
 .webix_scroll_cont .formLogin .webix_scroll_cont {
     border-radius: 5px;
-    background-color: rgb(116, 195, 248);
+    background-color: linear-gradient(to right, #8fe6fa, #0083b0);
     height: 40%;
 }
 
@@ -86,20 +87,19 @@
 
 /* Title Label */
 .formLogin .webix_inp_top_label {
-    color: rgb(41, 6, 240);
+    color: #FFFFFF;
     font-size: 20px;
 }
 
 /* Title Form */
-.formLogin .titleFormLogin {
+.formLogin .titleFormLogin  {
     text-align: center;
-    font-size: 50px;
 }
 
+
 .titleFormLogin .webix_el_box {
-    color: rgb(28, 3, 250);
+    color: #72efff;
     font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .box-upload-image{
@@ -108,9 +108,38 @@
 }
 
 .box-upload-image .img-backgroundLogin{
+    /* padding-top: 4px;
+    padding-right: 4px; */
     width: 100%;
 }
 
-.webix_button {
-    border-radius: 10%;
+.button_signup .webix_button{
+    border-radius: 2%;
+    background: #2c2d2f;
+    border: 1px solid white;
+    text-shadow: 0 -1px #134471;
+    box-shadow: inset 0px 1px 1px #8eb3d5;
+    -webkit-box-shadow: inset 0px 1px 1px #8eb3d5;
+    color:#FFFFFF;
+    font-size: 15px;
 }
+
+.button_login .webix_button{
+    border-radius: 3%;
+    background: #3d8fbe;
+    text-shadow: 0 -1px #134471;
+    box-shadow: inset 0px 1px 1px #8eb3d5;
+    -webkit-box-shadow: inset 0px 1px 1px #8eb3d5;
+    color:#FFFFFF;
+    font-size: 18px;
+}
+
+.button_login:hover .webix_button{
+    font-size: 20px;
+    background-color:  #87c5e9;
+}
+
+.webix_button {
+    border-radius: 2%;
+}
+
