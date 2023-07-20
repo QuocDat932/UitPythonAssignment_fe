@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import {data} from "models/records";
+import Config from "../config/Config";
 
 export default class DataView extends JetView{
 	config(){
@@ -7,5 +8,7 @@ export default class DataView extends JetView{
 	}
 	init(view){
 		view.parse(data);
+	}
+	ready(){
 	}
 }

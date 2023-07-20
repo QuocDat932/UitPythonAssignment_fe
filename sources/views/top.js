@@ -1,5 +1,6 @@
 import { JetView, plugins } from "webix-jet";
 import AboutUs from "./aboutUs";
+import swal from "sweetalert";
 export default class TopView extends JetView {
 	config() {
 		var header = {
@@ -14,8 +15,10 @@ export default class TopView extends JetView {
 			width: 180, layout: "y", select: true,
 			template: "<span class='webix_icon #icon#'></span> #value# ",
 			data: [
-				{ value:"Dashboard", id:"start", icon:"wxi-columns" },
-				{ value:"Data",		 id:"data",  icon:"wxi-pencil" }
+				{ value:"OverView", id:"start", icon:"wxi-columns" },
+				{ value:"User Entry",id:"user.user_entry",  icon:"wxi-user" },
+				{ value:"User List",id:"user.user_list",  icon:"wxi-folder-open" },
+
 			]
 		};
 
@@ -45,8 +48,8 @@ export default class TopView extends JetView {
 		var menuFooter = {
 			view: "button",
 			type: "image",
-			image: "img/LogoAnHDevFooter.jpg",
-			label:"AnhDev",
+			image: "img/logo_assignment.jpg",
+			label:"Nhóm 03",
 			click: () =>{
 				this.aboutUs.showWindow()
 			}
@@ -69,6 +72,15 @@ export default class TopView extends JetView {
 		return ui;
 	}
 	init() {
+
+		if ($$("attachfile")) {
+			$$("attachfile").destructor();
+		}
+
+		if ($$("menuSub")) {
+			$$("menuSub").destructor();
+		}
+
 		this.use(plugins.Menu, "top:menu");
 		// Render load file one time
 		webix.ui({
@@ -131,13 +143,25 @@ export default class TopView extends JetView {
 				on: {
 					onItemClick: (val) => {
 						$$("menuSub").hide();
-						if (val == "Logout") {
-							window.location.assign("http://localhost:8081/#!/login_form");
-							window.location.reload();
+
+						swal({
+							title: "Xác nhận",
+							text: "Bạn muốn đăng xuất không",
+							icon: "warning",
+							buttons: true,
+							dangerMode: true,
+						  })
+						  .then((willDelete) => {
+							if (willDelete) {
+								window.location.assign("http://localhost:8081/#!/login_form");
+								window.location.reload();
+							} else {
+								window.location.reload();
+							}
+						  });
 						}
 					}
 				}
-			}
 		});
 
 		this.aboutUs = new AboutUs({id:"AboutUs"});
