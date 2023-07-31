@@ -4,13 +4,13 @@ import axios from 'axios';
 import UserHelper from '../../config/UserHelper';
 class services {
 
-    accounts = [
+    account = [
         { userName: "quocdat@gmail.com", passWord: "22410007" },
         { userName: "nhauyen@gmail.com", passWord: "22210030" },
-        { userName: "tanphat@gmail.com", passWord: "22210018" },
+        { userName: "tenphat@gmail.com", passWord: "22210018" },
     ];
 
-    checkLogin = () =>{
+    checkLogin = async () =>{
         let inValUserName = $$("UserName").getValue();
         let inValUserPassWord = $$("Password").getValue();
         if(inValUserName == '' || inValUserName == undefined){
@@ -21,13 +21,25 @@ class services {
             return false;
         }
 
-        return this.accounts.some((e) => (e.userName == inValUserName && e.passWord == inValUserPassWord));
+        let {data: result} = await axios.get('http://127.0.0.1:8000/api/users/get-user-login', {params: {"email":inValUserName,"password":inValUserPassWord}});
+        if(result.status){
+            Config.setUserLogin(result.data);
+            Config.IS_LOGIN = true;
+            return true;
+        } else {
+            Config.IS_LOGIN = false;
+            return false;
+        }
+        
+
     };
 
-    btnLogin_click = () => {
-        if(this.checkLogin()){
+    btnLogin_click = async () => {
+        if(await this.checkLogin()){
+            if(Config.IS_LOGIN){
                 window.location.assign("http://localhost:8081/#!/top/start");
                 swal("Success!", "Login Success!", "success", {buttons: false ,timer: 1500});
+            }
         } else {
             swal("Fail!", "Login Fail!", "error", {buttons: false ,timer: 2000});
             $$("UserName").focus();
