@@ -2,7 +2,7 @@ import UserHelper from "./UserHelper";
 
 class Config{
 
-    SERVER_BACKENR_URI = "http://127.0.0.1:5000";
+    SERVER_BACKEND_URI = "http://127.0.0.1:8000/api/";
     USERLOGIN = JSON.parse(localStorage.getItem("USERLOGIN"));
 
     setUserLogin(obj) {
@@ -22,7 +22,7 @@ class Config{
         if(this.USERLOGIN){
 			window.location.assign(hrf);
 		}else{
-            window.location.assign("http://localhost:8081/#!/login_form");
+            window.location.assign("/#!/login_form");
         };
     }
     
