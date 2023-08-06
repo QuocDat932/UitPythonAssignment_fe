@@ -22,7 +22,7 @@ class Config{
         if(this.USERLOGIN){
 			window.location.assign(hrf);
 		}else{
-            window.location.assign("http://localhost:8081/#!/login_form");
+            window.location.assign("/#!/login_form");
         };
     }
     
