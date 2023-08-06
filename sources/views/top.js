@@ -15,9 +15,11 @@ export default class TopView extends JetView {
 			width: 180, layout: "y", select: true,
 			template: "<span class='webix_icon #icon#'></span> #value# ",
 			data: [
-				{ value:"OverView", id:"start", icon:"wxi-columns" },
+				{ value:"OverView", id:"start", icon:"mdi mdi-clover" },
+				{ value:"Role Entry",id:"role.role_entry",  icon:"mdi mdi-account-convert" },
+				{ value:"Role List",id:"role.role_list",  icon:"mdi mdi-account-supervisor-circle" },
 				{ value:"User Entry",id:"user.user_entry",  icon:"wxi-user" },
-				{ value:"User List",id:"user.user_list",  icon:"wxi-folder-open" },
+				{ value:"User List",id:"user.user_list",  icon:"mdi mdi-account-group-outline" },
 
 			]
 		};
@@ -153,7 +155,7 @@ export default class TopView extends JetView {
 						  })
 						  .then((willDelete) => {
 							if (willDelete) {
-								window.location.assign("http://localhost:8081/#!/login_form");
+								window.location.assign("/#!/login_form");
 								window.location.reload();
 							} else {
 								window.location.reload();
