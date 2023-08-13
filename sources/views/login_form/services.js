@@ -37,7 +37,7 @@ class services {
     btnLogin_click = async () => {
         if(await this.checkLogin()){
             if(Config.IS_LOGIN){
-                window.location.assign("/#!/top/user.user_entry");
+                window.location.assign("/#!/top/start");
                 swal("Success!", "Login Success!", "success", {buttons: false ,timer: 1500});
             }
         } else {

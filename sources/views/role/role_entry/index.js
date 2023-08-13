@@ -14,11 +14,11 @@ const leftForm = () => ({
 			columns: [
 				{ id: 'id', header: 'Mã Vai Trò', fillspace: true },
 				{ id: 'name', header: 'Tên Vai Trò', fillspace: true },
-				{ id: 'is_use', header: 'Trạng Thái', fillspace: true },
+				{ id: 'is_use_text', header: 'Trạng Thái', fillspace: true },
 			],
 			on:{
 				onItemDblClick: function(val){
-					console.log(val);
+					services.onDbClick(this.getItem(val.row));
 				}
 			}
 		},
@@ -71,23 +71,24 @@ const rightForm = () => ({
 	rows: [
 		{
 			view: 'text',
-			id: 'text_role_id',
-			name: 'text_role_id',
+			id: 'role_id',
+			name: 'role_id',
 			label: 'Mã Vai Trò',
-			labelWidth: 100
+			labelWidth: 100,
+			readonly: true
 		},
 		{
 			view: 'text',
-			id: 'text_role_name',
-			name: 'text_role_name',
+			id: 'role_name',
+			name: 'role_name',
 			label: 'Tên Vai Trò',
 			labelWidth: 100
 
 		},
 		{
 			view: 'textarea',
-			id: 'text_description',
-			name: 'text_description',
+			id: 'description',
+			name: 'description',
 			label: 'Ghi Chú',
 			labelWidth: 100,
 			height: 120
@@ -97,8 +98,10 @@ const rightForm = () => ({
 			cols: [
 				{
 					view: "switch",
+					id:'is_use',
+					name:'is_use',
 					value: 1,
-					label: 'Mã Vai Trò',
+					label: 'Sử Dụng',
 					labelWidth: 100
 				},
 				{
@@ -106,14 +109,16 @@ const rightForm = () => ({
 					id: 'btn_save',
 					name: 'btn_save',
 					label: 'Lưu',
-					width: 120
+					width: 120,
+					click: services.btnSave_click
 				},
 				{
 					view: 'button',
-					id: 'btn_delete',
-					name: 'btn_delete',
-					label: 'Xoá',
-					width: 120
+					id: 'btn_delete_form',
+					name: 'btn_delete_form',
+					label: 'Xoá Form',
+					width: 120,
+					click: services.btnClearForm_click
 				}
 			]
 		},
