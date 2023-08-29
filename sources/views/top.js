@@ -17,7 +17,6 @@ export default class TopView extends JetView {
 			data: [
 				{ value:"OverView", id:"start", icon:"mdi mdi-clover" },
 				{ value:"Role Entry",id:"role.role_entry",  icon:"mdi mdi-account-convert" },
-				{ value:"Role List",id:"role.role_list",  icon:"mdi mdi-account-supervisor-circle" },
 				{ value:"User Entry",id:"user.user_entry",  icon:"wxi-user" },
 				{ value:"User List",id:"user.user_list",  icon:"mdi mdi-account-group-outline" },
 
