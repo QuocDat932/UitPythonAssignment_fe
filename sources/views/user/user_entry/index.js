@@ -204,7 +204,7 @@ const formDetailRight = () => ({
 							value: "Delete",
 							name: "Delete",
 							id: "btnDelete",
-							//click: service.btnDelete_click
+							click: service.btnDelete_click
 						},
 						{
 							view: "button",
@@ -218,7 +218,7 @@ const formDetailRight = () => ({
 							value: "Save",
 							name: "btnSearch",
 							id: "btnSearch",
-							//click: service.btnSave_click
+							click: service.btnSave_click
 						}
 					]
 				}
@@ -245,7 +245,7 @@ export default class loginFormView extends JetView {
 		};
 	}
 	init() {
-		service.loadInit()
+		service.onLoad()
 	}
 	ready(){
 	}
