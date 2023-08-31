@@ -16,35 +16,35 @@ const leftForm = () => ({
 				{ id: 'name', header: 'Tên Vai Trò', fillspace: true },
 				{ id: 'is_use_text', header: 'Trạng Thái', fillspace: true },
 			],
-			on:{
-				onItemDblClick: function(val){
+			on: {
+				onItemDblClick: function (val) {
 					services.onDbClick(this.getItem(val.row));
 				}
 			}
 		},
 		{
 			view: "chart",
-			id: "chart_statistics_the_number_of_role_by_role_name",
+			id: "chart_statistics_the_number_of_user_by_role",
 			type: "bar",
-			value: "#number#",
-			label: "#number#",
+			value: "#value#",
+			label: "#value#",
 			color: "#color#",
 			radius: 0,
 			barWidth: 40,
 			height: 300,
 			tooltip: {
-				template: "#number#"
+				template: "#value#"
 			},
 			xAxis: {
-				title: "Thống Kê Lượng Vai Trò Theo Tên Vai Trò",
+				title: "Thống Kê Lượng Người Dùng Theo Vai Trò",
 				template: "#role_name#",
 				lines: false
 			},
 			yAxis: {
 				// title: "Số Lượng",
 				start: 0,
-				step: 10,
-				end: 100,
+				step: 4,
+				end: 20,
 				lines: true
 			},
 			padding: {
@@ -53,11 +53,11 @@ const leftForm = () => ({
 				top: 50
 			},
 			data: [
-				{ id: 1, number: 20, role_name: "User", color: "#ee4339" },
-				{ id: 2, number: 55, role_name: "Tester", color: "#ee9336" },
-				{ id: 3, number: 40, role_name: "Developer", color: "#eed236" },
-				{ id: 4, number: 78, role_name: "Admin", color: "#d3ee36" },
-				{ id: 10, number: 59, role_name: "Manager", color: "#e33fc7" }
+				// { id: 1, number: 20, role_name: "User", color: "#ee4339" },
+				// { id: 2, number: 55, role_name: "Tester", color: "#ee9336" },
+				// { id: 3, number: 40, role_name: "Developer", color: "#eed236" },
+				// { id: 4, number: 78, role_name: "Admin", color: "#d3ee36" },
+				// { id: 10, number: 59, role_name: "Manager", color: "#e33fc7" }
 			]
 		}
 	]
@@ -91,15 +91,29 @@ const rightForm = () => ({
 			name: 'description',
 			label: 'Ghi Chú',
 			labelWidth: 100,
-			height: 120
+			height: 80
 
+		},
+		{
+			view: "colorpicker",
+			id: "color",
+			name: "color",
+			label: "Màu Sắc", 
+			value: "#751FE0",
+			labelWidth: 100, 
+			suggest:  {
+				padding: 100,
+				type: "colorselect", body: {
+					button: true
+				}
+			}
 		},
 		{
 			cols: [
 				{
 					view: "switch",
-					id:'is_use',
-					name:'is_use',
+					id: 'is_use',
+					name: 'is_use',
 					value: 1,
 					label: 'Sử Dụng',
 					labelWidth: 100
@@ -122,51 +136,19 @@ const rightForm = () => ({
 				}
 			]
 		},
-		/*{
-			rows: [
-				{
-					view: 'form',
-					id: 'formButton',
-					name: 'formButton',
-					maxWidth: 2000,
-					border:false,
-					cols: [
-						{
-							width: 70
-						},
-						{
-							view: 'button',
-							id: 'btn_save',
-							name: 'btn_save',
-							label: 'Lưu',
-							width: 100
-						},
-						{
-							view: 'button',
-							id: 'btn_delete',
-							name: 'btn_delete',
-							label: 'Xoá',
-							width: 100
-						}
-					]
-				}
-			]
-		},*/
-		{ template: "Thống Kê Vai Trò Theo Trạng Thái ", type: "section" },
+		{ template: "Thống Kê Người Dùng Theo Trạng Thái ", type: "section" },
 		{
 			view: "chart",
-			id: "chart",
+			id: "chart_statistics_the_number_of_user_by_is_use",
+			name: "chart_statistics_the_number_of_user_by_is_use",
 			type: "pie",
-			value: "#number#",
+			value: "#value#",
 			color: "#color#",
-			label: "#is_use#",
-			pieInnerText: "#number#",
-			tooltip: "statistics the number of #is_use# is #number#",
+			label: "#label#",
+			pieInnerText: "#value#",
+			tooltip: "Thống Kê Lượng Người Dùng Theo Trạng Thái",
 			shadow: 0,
-			data: [
-				{ number: "5", is_use: "Y - Active", color: "#367fee" },
-				{ number: "4", is_use: "N - inActive", color: "#ee3639" },
-			]
+			data: []
 		}
 	]
 
