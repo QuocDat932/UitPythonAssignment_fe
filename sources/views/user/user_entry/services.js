@@ -48,12 +48,18 @@ class services {
         this.btnClear_click()
     };
 
-    selectCurrentUser = (val) => {
+    selectCurrentUser = async (val) => {
         let currentUser = this.listUser.find(e => e.id == val);
         $$("formHeader").setValues(currentUser);
         $$("role_id").setValue(currentUser.role.role_id);
         $$("role_name").setValue(currentUser.role.role_name);
         $$("btnDelete").enable();
+        $$("listDeviceOfUser").clearAll();
+        // Commit: FE0006 - Design table list device is provided for user QuocDat - TanPhat
+        let {data: response} = await axios.get(Config.SERVER_BACKEND_URI+`users/get-device-is-provided-for-user?user_id=${currentUser.user_id}`)
+        if(response.status){
+            $$("listDeviceOfUser").parse(response.data);
+        }
     };
 
     btnClear_click = () => {

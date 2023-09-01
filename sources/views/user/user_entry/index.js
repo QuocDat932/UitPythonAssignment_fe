@@ -51,37 +51,24 @@ const formListLeft = () => ({
 	]
 });
 
-const formChart = () => ({
-	id: 'formChart',
-	name:'formChart',
+const tableDevice = () => ({
+	id: 'tableDevice',
+	name:'tableDevice',
 	rows:[
-		{
-				id:"charts",
-				cols:[
-				  {
-					view: "chart",
-					id:"chart",
-					type:"pie",
-					value:"#sales#",
-					color:"#color#",
-					label:"#month#",
-					pieInnerText:"#sales#",
-					shadow:0,
-					data:[
-						{ sales:"20", month:"Jan", color: "#ee3639" },
-						{ sales:"30", month:"Feb", color: "#ee9e36" },
-						{ sales:"50", month:"Mar", color: "#eeea36" },
-						{ sales:"40", month:"Apr", color: "#a9ee36" },
-						{ sales:"70", month:"May", color: "#36d3ee" },
-						{ sales:"80", month:"Jun", color: "#367fee" },
-						{ sales:"60", month:"Jul", color: "#9b36ee" }
-					]
-				  }
+		{ template: "Danh Sách Thiết Bị Được Cung Cấp", type: "section" },
+		{		
+				view: "datatable",
+				id:"listDeviceOfUser",
+				name:"listDeviceOfUser",
+				select: true,
+				scrollX: false,
+				columns:[
+					{id: "number", header: "STT", fillspace: 0.3},
+					{id: "device_name", header: "Thiết Bị", fillspace: true},
+					{id: "date_provide", header: "Ngày Cấp", fillspace: 0.5},
+					{id: "date_recall", header: "Ngày Trả", fillspace: 0.5},
+					{id: "description", header: "Ghi Chú", fillspace: true}
 				]
-		},
-		{
-			template:"<div style='width:100%;text-align:center'>Thống Kê Người Dùng</div>",
-			height:30
 		}
 	]
 })
@@ -93,7 +80,7 @@ const formRight = () => ({
 	maxWidth: 800,
 	rows:[
 		formDetailRight(),
-		formChart()
+		tableDevice()
 	]
 })
 
