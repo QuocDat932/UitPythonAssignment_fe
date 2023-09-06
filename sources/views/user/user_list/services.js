@@ -13,8 +13,6 @@ class services {
     };
 
     parseVideoToTable = async () => {
-        await this.getAllVideo();
-        $$('videoList01').parse(this.AllVideo);
         
     }
 
