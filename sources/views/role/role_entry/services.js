@@ -3,7 +3,9 @@ import Config from "../../../config/Config";
 class services {
 
     onLoad = async () => {
-        await this.loadAllRole()
+        await this.loadAllRole();
+        this.getDataForChartAnalysisTheNumberOfUserByRole();
+        this.getDataForChartAnalysisTheNumberOfUserByIsUse();
     }
 
     loadAllRole = async () =>{
@@ -13,7 +15,6 @@ class services {
 
     onDbClick = async (val) => {
         var RoleData = await this.getRoleById(val.id)
-        console.log(RoleData);
         this.setDataRoleIntoForm(RoleData.data)
     }
 
@@ -29,12 +30,13 @@ class services {
     }
 
     btnSave_click= async () =>{
-        let {role_id: role_id, role_name: role_name, description: description, is_use: is_use} = $$("rightForm").getValues();
+        let {role_id: role_id, role_name: role_name, description: description, is_use: is_use, color: color} = $$("rightForm").getValues();
         let roleParam = {
             "role_id": role_id,
             "role_name": role_name,
             "description": description,
-            "is_use": is_use
+            "is_use": is_use,
+            "color": color
         }
         let {data: response} = await axios.post(Config.SERVER_BACKEND_URI+'roles/post-save-role', roleParam);
         if(response.status){
@@ -55,6 +57,26 @@ class services {
         // $$("role_id").define('readonly', false);
         // $$("role_id").refresh();
     }
+
+    getDataForChartAnalysisTheNumberOfUserByRole = async () =>{
+        let {data: response} = await axios.get(Config.SERVER_BACKEND_URI+'roles/statistics-the-number-of-user-by-role')
+        $$('chart_statistics_the_number_of_user_by_role').clearAll();
+        $$('chart_statistics_the_number_of_user_by_role').parse(response.data);
+    };
+    getDataForChartAnalysisTheNumberOfUserByIsUse = async () =>{
+        let {data: response} = await axios.get(Config.SERVER_BACKEND_URI+'roles/statistics-the-number-of-user-by-is-use')
+        let dataOfChart = response.data.map((item,index)=>{
+            return {
+                "label": item.label,
+                "value": item.value,
+                "color": (item.status_id == 0) ? "#ee3639" : "#367fee"
+            }
+        })
+        $$('chart_statistics_the_number_of_user_by_is_use').clearAll();
+        $$('chart_statistics_the_number_of_user_by_is_use').parse(dataOfChart);
+    }      
+    
+
 
 }
 export default new services();
