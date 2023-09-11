@@ -18,7 +18,7 @@ export default class TopView extends JetView {
 				{ value:"OverView", id:"start", icon:"mdi mdi-clover" },
 				{ value:"Role Entry",id:"role.role_entry",  icon:"mdi mdi-account-convert" },
 				{ value:"User Entry",id:"user.user_entry",  icon:"wxi-user" },
-				{ value:"Manage Device",id:"user.user_list",  icon:"mdi mdi-laptop-chromebook" },
+				{ value:"Manage Device",id:"device.device_entry",  icon:"mdi mdi-laptop-chromebook" },
 
 			]
 		};

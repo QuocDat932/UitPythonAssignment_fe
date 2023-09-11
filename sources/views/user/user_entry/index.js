@@ -91,6 +91,10 @@ const formDetailRight = () => ({
 	maxWidth: 1000,
 	cols: [
 		{
+			minWidth: 10,
+			maxWidth: 20
+		},
+		{
 			rows: [
 				{
 					view: "text",
@@ -210,6 +214,10 @@ const formDetailRight = () => ({
 					]
 				}
 			]
+		},
+		{
+			minWidth: 10,
+			maxWidth: 20
 		}
 	],
 	rules: {
