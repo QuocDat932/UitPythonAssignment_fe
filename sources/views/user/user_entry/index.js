@@ -92,7 +92,7 @@ const formDetailRight = () => ({
 	cols: [
 		{
 			minWidth: 10,
-			maxWidth: 20
+			maxWidth: 10
 		},
 		{
 			rows: [
@@ -217,7 +217,7 @@ const formDetailRight = () => ({
 		},
 		{
 			minWidth: 10,
-			maxWidth: 20
+			maxWidth: 10
 		}
 	],
 	rules: {
